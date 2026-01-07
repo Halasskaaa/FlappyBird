@@ -19,20 +19,35 @@ namespace FlappyBird
     public partial class MainWindow : Window
     {
         DispatcherTimer gameTimer = new DispatcherTimer();
-        public MainWindow()
+
+		double gravity = 2;
+		double jumpStrength = -15;
+
+		public MainWindow()
         {
             InitializeComponent();
+
+            this.KeyDown += OneKeyDown;
 
             gameTimer.Interval = TimeSpan.FromMilliseconds(20);
             gameTimer.Tick += GameLoop;
             gameTimer.Start();
         }
 
-        double gravity = 2;
         public void GameLoop(object sender, EventArgs e)
         {
             double y = Canvas.GetTop(bird);
             Canvas.SetTop(bird, y + gravity);
+
+            gravity += 1;
+        }
+
+        public void OneKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                gravity = jumpStrength;
+            }
         }
 	}
 }
