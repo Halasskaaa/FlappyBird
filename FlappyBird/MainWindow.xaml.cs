@@ -103,7 +103,6 @@ namespace FlappyBird
 					}
 				}
 			}
-
 		}
 
 		public void OneKeyDown(object sender, KeyEventArgs e)
