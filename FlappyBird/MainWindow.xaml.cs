@@ -27,6 +27,9 @@ namespace FlappyBird
         Random rnd = new Random();
         int pipeTimer = 0;
 
+		int score = 0;
+		List<Rectangle> scorePipes = new List<Rectangle>();
+
 		public MainWindow()
         {
             InitializeComponent();
@@ -84,8 +87,23 @@ namespace FlappyBird
 				{
 					GameOver();
 				}
-			
 			}
+
+			foreach (var pipe in pipes)
+			{
+				if (!scorePipes.Contains(pipe))
+				{
+					double pipeX = Canvas.GetLeft(pipe);
+					double birdX = Canvas.GetLeft(bird);
+					if (pipeX + pipe.Width < birdX)
+					{
+						score++;
+						scoreText.Text = "Score: " + score/2;
+						scorePipes.Add(pipe);
+					}
+				}
+			}
+
 		}
 
 		public void OneKeyDown(object sender, KeyEventArgs e)

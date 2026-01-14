@@ -13,7 +13,10 @@
 				<ImageBrush ImageSource="Images/background.png" Stretch="UniformToFill"/>
 			</Canvas.Background>
 
-			<Image x:Name="bird" Source="Images/bird.png" Width="50" Height="40" Canvas.Left="50" Canvas.Top="200" RenderTransformOrigin="-0.02,0.741"/>
+			<Image x:Name="bird" Source="Images/bird.png" Width="50" Height="34" Canvas.Left="50" Canvas.Top="200" RenderTransformOrigin="-0.02,0.741"/>
+
+			<TextBlock x:Name="scoreText" Text="Score: 0" FontSize="24" FontWeight="Bold" Foreground="Magenta" Canvas.Left="10" Canvas.Top="10"/>
+
 		</Canvas>
 	</Grid>
 </Window>
