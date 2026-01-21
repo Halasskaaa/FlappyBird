@@ -38,7 +38,6 @@ namespace FlappyBird
 
             gameTimer.Interval = TimeSpan.FromMilliseconds(20);
             gameTimer.Tick += GameLoop;
-            gameTimer.Start();
         }
 
         public void GameLoop(object sender, EventArgs e)
@@ -127,7 +126,6 @@ namespace FlappyBird
             pipes.Add(pipe);
             return pipe;
 		}
-
 		public void MakePipePair()
 		{
 			double gapHeight = 150;
@@ -151,6 +149,7 @@ namespace FlappyBird
 			gameTimer.Stop();
 			gameOverScreen.Visibility = Visibility.Visible;
 		}
+
 		public void StartButton_Click(object sender, RoutedEventArgs e)
 		{
 			menuScreen.Visibility = Visibility.Collapsed;
@@ -168,6 +167,36 @@ namespace FlappyBird
 		public void DifficultytButton_Click(object sender, RoutedEventArgs e)
 		{
 			difficultyScreen.Visibility = Visibility.Collapsed;
+		}
+		public void DifficultytChangeButton_Click (object sender, RoutedEventArgs e)
+		{
+			difficultyScreen.Visibility = Visibility.Visible;
+			gameOverScreen.Visibility = Visibility.Collapsed;  
+		}
+
+		public void Start()
+		{
+			score = 0;
+			scoreText.Text = "Score: 0";
+
+			gravity = 2;
+			Canvas.SetTop(bird, 200);
+
+			pipeTimer = 0;
+
+			foreach (var pipe in pipes)
+			{
+				gameCanvas.Children.Remove(pipe);
+			}
+
+			pipes.Clear();
+			scorePipes.Clear();
+
+			gameOverScreen.Visibility = Visibility.Collapsed;
+			menuScreen.Visibility = Visibility.Collapsed;
+			difficultyScreen.Visibility = Visibility.Collapsed;
+
+			gameTimer.Start();
 		}
 	}
 }
