@@ -15,7 +15,9 @@
 
 			<Image x:Name="bird" Source="Images/bird.png" Width="50" Height="34" Canvas.Left="50" Canvas.Top="200" RenderTransformOrigin="-0.02,0.741"/>
 
-			<TextBlock x:Name="scoreText" Text="Score: 0" FontSize="24" FontWeight="Bold" Foreground="Magenta" Canvas.Left="10" Canvas.Top="10"/>
+			<Image x:Name="fogOverlay" Source="Images/fog.png" Stretch="Fill" Opacity="0.5" Visibility="Collapsed"/>
+
+			<TextBlock x:Name="scoreText" Text="Score: 0" FontSize="24" FontWeight="Bold" Foreground="#d9ff00" Canvas.Left="10" Canvas.Top="10"/>
 
 		</Canvas>
 
@@ -30,9 +32,9 @@
 		<Grid x:Name="difficultyScreen" Background="#AA000000" Visibility="Collapsed">
 			<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
 				<TextBlock Text="Select Difficulty" FontSize="36" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-				<Button x:Name="normalButton" Content="Normal" Width="150" Height="50" Margin="0,20,0,0" Click="DifficultytButton_Click"/>
-				<Button x:Name="rainyButton" Content="Rainy" Width="150" Height="50" Margin="0,10,0,0" Click="DifficultytButton_Click"/>
-				<Button x:Name="foggyButton" Content="Foggy" Width="150" Height="50" Margin="0,10,0,0" Click="DifficultytButton_Click"/>
+				<Button x:Name="normalButton" Content="Normal" Width="150" Height="50" Margin="0,20,0,0" Click="NormalButton_Click"/>
+				<Button x:Name="foggyButton" Content="Foggy" Width="150" Height="50" Margin="0,10,0,0" Click="FoggyButton_Click"/>
+				<Button x:Name="rainyButton" Content="Rainy" Width="150" Height="50" Margin="0,10,0,0" Click="RainyButton_Click"/>
 				<Button x:Name="backButton" Content="Back" Width="150" Height="50" Margin="0,10,0,0" Click="BackButton_Click"/>
 			</StackPanel>
 		</Grid>

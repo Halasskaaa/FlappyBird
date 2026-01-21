@@ -164,10 +164,21 @@ namespace FlappyBird
 		{
 			Application.Current.Shutdown();
 		}
-		public void DifficultytButton_Click(object sender, RoutedEventArgs e)
+
+		public void NormalButton_Click(object sender, RoutedEventArgs e)
 		{
 			StartGame();
 		}
+		public void FoggyButton_Click(object sender, RoutedEventArgs e)
+		{
+			StartGame();
+		}
+		public void RainyButton_Click(object sender, RoutedEventArgs e)
+		{
+			StartGame();
+		}
+		
+
 		public void DifficultytChangeButton_Click (object sender, RoutedEventArgs e)
 		{
 			difficultyScreen.Visibility = Visibility.Visible;
