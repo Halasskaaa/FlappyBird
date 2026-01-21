@@ -153,19 +153,21 @@ namespace FlappyBird
 		}
 		public void StartButton_Click(object sender, RoutedEventArgs e)
 		{
-
+			menuScreen.Visibility = Visibility.Collapsed;
+			difficultyScreen.Visibility = Visibility.Visible;
 		}
 		public void BackButton_Click(object sender, RoutedEventArgs e)
 		{
-
+			difficultyScreen.Visibility = Visibility.Collapsed;
+			menuScreen.Visibility = Visibility.Visible;
 		}
 		public void ExitButton_Click(object sender, RoutedEventArgs e)
 		{
-
+			Application.Current.Shutdown();
 		}
 		public void DifficultytButton_Click(object sender, RoutedEventArgs e)
 		{
-
+			difficultyScreen.Visibility = Visibility.Collapsed;
 		}
 	}
 }
