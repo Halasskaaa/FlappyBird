@@ -149,9 +149,23 @@ namespace FlappyBird
 		public void GameOver()
 		{
 			gameTimer.Stop();
-			MessageBox.Show("Game Over!");
+			gameOverScreen.Visibility = Visibility.Visible;
+		}
+		public void StartButton_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+		public void BackButton_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+		public void ExitButton_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+		public void DifficultytButton_Click(object sender, RoutedEventArgs e)
+		{
+
 		}
 	}
 }
-
-
