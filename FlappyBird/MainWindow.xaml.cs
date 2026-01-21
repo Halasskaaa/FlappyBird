@@ -166,15 +166,20 @@ namespace FlappyBird
 		}
 		public void DifficultytButton_Click(object sender, RoutedEventArgs e)
 		{
-			difficultyScreen.Visibility = Visibility.Collapsed;
+			StartGame();
 		}
 		public void DifficultytChangeButton_Click (object sender, RoutedEventArgs e)
 		{
 			difficultyScreen.Visibility = Visibility.Visible;
 			gameOverScreen.Visibility = Visibility.Collapsed;  
 		}
+		public void RestartButton_Click (object sender, RoutedEventArgs e)
+		{
+			StartGame();
+		}
 
-		public void Start()
+		
+		public void StartGame()
 		{
 			score = 0;
 			scoreText.Text = "Score: 0";
