@@ -19,14 +19,22 @@
 
 			<Image x:Name="fogOverlay"
 				   Source="Images/fog.png"
-				   Visibility="Collapsed"
+				   Visibility="visible"
 				   Canvas.Left="0"
 				   Canvas.Top="0"
-				   Opacity="0.9"
+				   Opacity="0"
 				   Width="800"
 				   Height="434"
-				   Stretch="Fill"
-				   Panel.ZIndex="999"/>
+				   Panel.ZIndex="10"/>
+
+			<Image x:Name="rainOverlay"
+				   Source="Images/rain.png"
+				   Opacity="0"
+				   Width="800"
+				   Height="434"
+				   Panel.ZIndex="9"
+				   IsHitTestVisible="False"/>
+
 
 			<TextBlock x:Name="scoreText" Text="Score: 0" FontSize="24" FontWeight="Bold" Foreground="#d9ff00" Canvas.Left="10" Canvas.Top="10"/>
 

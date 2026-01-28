@@ -31,7 +31,6 @@ namespace FlappyBird
 		List<Rectangle> scorePipes = new List<Rectangle>();
 
 		bool fogEnabled = false;
-		int fogTimer = 0;
 
 		public MainWindow()
         {
@@ -104,20 +103,6 @@ namespace FlappyBird
 					}
 				}
 			}
-
-			if (fogEnabled)
-			{
-				fogTimer++;
-				if (fogTimer > 200)
-				{
-					fogOverlay.Visibility = fogOverlay.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-					fogTimer = 0;
-				}
-			}
-			else
-			{
-				fogOverlay.Visibility = Visibility.Collapsed;
-			}
 		}
 
 		public void OneKeyDown(object sender, KeyEventArgs e)
@@ -184,6 +169,7 @@ namespace FlappyBird
 		public void NormalButton_Click(object sender, RoutedEventArgs e)
 		{
 			fogEnabled = false;
+			StopFogAnimation();
 			backgroundBrush.ImageSource =
 				new BitmapImage(
 					new Uri("pack://application:,,,/Images/normal.png", UriKind.Absolute)
@@ -194,6 +180,7 @@ namespace FlappyBird
 		public void FoggyButton_Click(object sender, RoutedEventArgs e)
 		{
 			fogEnabled = true;
+			StartFogAnimation();
 			backgroundBrush.ImageSource =
 				new BitmapImage(
 					new Uri("pack://application:,,,/Images/foggy.jpg", UriKind.Absolute));
@@ -202,12 +189,31 @@ namespace FlappyBird
 		public void RainyButton_Click(object sender, RoutedEventArgs e)
 		{
 			fogEnabled = false;
+			StopFogAnimation();
 			backgroundBrush.ImageSource =
 					new BitmapImage(
 						new Uri("pack://application:,,,/Images/rainy.jpg", UriKind.Absolute));
 			StartGame();
 		}
-		
+
+		public void StartFogAnimation()
+		{
+			DoubleAnimation fogAnimation = new DoubleAnimation
+			{
+				From = 0.0,
+				To = 1.0,
+				Duration = TimeSpan.FromSeconds(10),
+				AutoReverse = true,
+				RepeatBehavior = RepeatBehavior.Forever
+			};
+			fogOverlay.BeginAnimation(OpacityProperty, fogAnimation);
+		}
+		public void StopFogAnimation()
+		{
+			fogOverlay.BeginAnimation(UIElement.OpacityProperty, null);
+			fogOverlay.Opacity = 0.0;
+		}
+
 		public void DifficultytChangeButton_Click (object sender, RoutedEventArgs e)
 		{
 			difficultyScreen.Visibility = Visibility.Visible;
@@ -223,8 +229,10 @@ namespace FlappyBird
 			score = 0;
 			scoreText.Text = "Score: 0";
 
-			fogTimer = 0;
-			fogOverlay.Visibility = Visibility.Collapsed;
+			if (!fogEnabled)
+			{
+				StopFogAnimation();
+			}
 
 			gravity = 2;
 			Canvas.SetTop(bird, 200);
