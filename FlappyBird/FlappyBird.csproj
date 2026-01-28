@@ -14,31 +14,33 @@
     <None Remove="Images\fog.png" />
     <None Remove="Images\fogBg.jpg" />
     <None Remove="Images\fogBg.png" />
+    <None Remove="Images\foggy.jpg" />
+    <None Remove="Images\normal.png" />
     <None Remove="Images\rain.png" />
     <None Remove="Images\rainBg.jpg" />
+    <None Remove="Images\rainy.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\rainBg.jpg">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Images\background.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Images\bird.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\fog.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\fogBg.jpg" />
     <Resource Include="Images\fogBg.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\foggy.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\normal.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\rain.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\rainy.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

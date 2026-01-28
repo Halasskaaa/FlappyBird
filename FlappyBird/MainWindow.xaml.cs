@@ -184,16 +184,27 @@ namespace FlappyBird
 		public void NormalButton_Click(object sender, RoutedEventArgs e)
 		{
 			fogEnabled = false;
+			backgroundBrush.ImageSource =
+				new BitmapImage(
+					new Uri("pack://application:,,,/Images/normal.png", UriKind.Absolute)
+				);
+
 			StartGame();
 		}
 		public void FoggyButton_Click(object sender, RoutedEventArgs e)
 		{
 			fogEnabled = true;
+			backgroundBrush.ImageSource =
+				new BitmapImage(
+					new Uri("pack://application:,,,/Images/foggy.jpg", UriKind.Absolute));
 			StartGame();
 		}
 		public void RainyButton_Click(object sender, RoutedEventArgs e)
 		{
 			fogEnabled = false;
+			backgroundBrush.ImageSource =
+					new BitmapImage(
+						new Uri("pack://application:,,,/Images/rainy.jpg", UriKind.Absolute));
 			StartGame();
 		}
 		

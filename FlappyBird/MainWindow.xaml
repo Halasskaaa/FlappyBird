@@ -10,7 +10,9 @@
 		<Canvas x:Name="gameCanvas">
 
 			<Canvas.Background>
-				<ImageBrush x:Name="backgroundBrush" ImageSource="Images/background.png" Stretch="UniformToFill"/>
+				<ImageBrush x:Name="backgroundBrush" 
+							ImageSource="Images/normal.png" 
+							Stretch="UniformToFill"/>
 			</Canvas.Background>
 
 			<Image x:Name="bird" Source="Images/bird.png" Width="50" Height="34" Canvas.Left="50" Canvas.Top="200" RenderTransformOrigin="-0.02,0.741"/>
@@ -20,6 +22,7 @@
 				   Visibility="Collapsed"
 				   Canvas.Left="0"
 				   Canvas.Top="0"
+				   Opacity="0.9"
 				   Width="800"
 				   Height="434"
 				   Stretch="Fill"
