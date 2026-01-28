@@ -30,6 +30,9 @@ namespace FlappyBird
 		int score = 0;
 		List<Rectangle> scorePipes = new List<Rectangle>();
 
+		bool fogEnabled = false;
+		int fogTimer = 0;
+
 		public MainWindow()
         {
             InitializeComponent();
@@ -51,7 +54,6 @@ namespace FlappyBird
 			{
 				GameOver();
 			}
-
 
 			pipeTimer++;
 			if (pipeTimer > 90)
@@ -102,6 +104,20 @@ namespace FlappyBird
 					}
 				}
 			}
+
+			if (fogEnabled)
+			{
+				fogTimer++;
+				if (fogTimer > 200)
+				{
+					fogOverlay.Visibility = fogOverlay.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+					fogTimer = 0;
+				}
+			}
+			else
+			{
+				fogOverlay.Visibility = Visibility.Collapsed;
+			}
 		}
 
 		public void OneKeyDown(object sender, KeyEventArgs e)
@@ -118,7 +134,7 @@ namespace FlappyBird
             {
                 Width = width,
                 Height = height,
-                Fill = Brushes.Green
+                Fill = Brushes.Plum
             };
             Canvas.SetLeft(pipe, x);
             Canvas.SetTop(pipe, y);
@@ -167,18 +183,20 @@ namespace FlappyBird
 
 		public void NormalButton_Click(object sender, RoutedEventArgs e)
 		{
+			fogEnabled = false;
 			StartGame();
 		}
 		public void FoggyButton_Click(object sender, RoutedEventArgs e)
 		{
+			fogEnabled = true;
 			StartGame();
 		}
 		public void RainyButton_Click(object sender, RoutedEventArgs e)
 		{
+			fogEnabled = false;
 			StartGame();
 		}
 		
-
 		public void DifficultytChangeButton_Click (object sender, RoutedEventArgs e)
 		{
 			difficultyScreen.Visibility = Visibility.Visible;
@@ -188,12 +206,14 @@ namespace FlappyBird
 		{
 			StartGame();
 		}
-
 		
 		public void StartGame()
 		{
 			score = 0;
 			scoreText.Text = "Score: 0";
+
+			fogTimer = 0;
+			fogOverlay.Visibility = Visibility.Collapsed;
 
 			gravity = 2;
 			Canvas.SetTop(bird, 200);

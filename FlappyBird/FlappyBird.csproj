@@ -11,6 +11,17 @@
   <ItemGroup>
     <None Remove="Images\background.png" />
     <None Remove="Images\bird.png" />
+    <None Remove="Images\fog.png" />
+    <None Remove="Images\fogBg.jpg" />
+    <None Remove="Images\fogBg.png" />
+    <None Remove="Images\rain.png" />
+    <None Remove="Images\rainBg.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\rainBg.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +29,16 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\bird.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\fog.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\fogBg.jpg" />
+    <Resource Include="Images\fogBg.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\rain.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
