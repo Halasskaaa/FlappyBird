@@ -170,6 +170,12 @@ namespace FlappyBird
 		{
 			fogEnabled = false;
 			StopFogAnimation();
+
+			rainOverlay.Visibility = Visibility.Collapsed;
+
+			gravity = 2;
+			jumpStrength = -12;
+
 			backgroundBrush.ImageSource =
 				new BitmapImage(
 					new Uri("pack://application:,,,/Images/normal.png", UriKind.Absolute)
@@ -181,6 +187,10 @@ namespace FlappyBird
 		{
 			fogEnabled = true;
 			StartFogAnimation();
+
+			gravity = 2;
+			jumpStrength = -12;
+
 			backgroundBrush.ImageSource =
 				new BitmapImage(
 					new Uri("pack://application:,,,/Images/foggy.jpg", UriKind.Absolute));
@@ -190,9 +200,16 @@ namespace FlappyBird
 		{
 			fogEnabled = false;
 			StopFogAnimation();
+
+			rainOverlay.Visibility = Visibility.Visible;
+
+			gravity = 3.5;
+			jumpStrength = -9;
+
 			backgroundBrush.ImageSource =
 					new BitmapImage(
 						new Uri("pack://application:,,,/Images/rainy.jpg", UriKind.Absolute));
+			
 			StartGame();
 		}
 
@@ -232,6 +249,11 @@ namespace FlappyBird
 			if (!fogEnabled)
 			{
 				StopFogAnimation();
+			}
+
+			if (rainOverlay.Visibility != Visibility.Visible)
+			{
+				rainOverlay.Visibility = Visibility.Collapsed;
 			}
 
 			gravity = 2;

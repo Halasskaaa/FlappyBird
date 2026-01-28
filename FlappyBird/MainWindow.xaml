@@ -29,10 +29,13 @@
 
 			<Image x:Name="rainOverlay"
 				   Source="Images/rain.png"
-				   Opacity="0"
+				   Opacity="0.8"
 				   Width="800"
 				   Height="434"
 				   Panel.ZIndex="9"
+				   Canvas.Left="0"
+				   Canvas.Top="0"
+				   Visibility="Collapsed"
 				   IsHitTestVisible="False"/>
 
 
