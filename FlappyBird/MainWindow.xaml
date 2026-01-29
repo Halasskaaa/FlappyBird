@@ -6,18 +6,43 @@
         xmlns:local="clr-namespace:FlappyBird"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-	<Grid>
-		<Canvas x:Name="gameCanvas">
+    <Grid>
+        
+        <TextBlock x:Name="finalScoreText"
+           Text=""
+           FontSize="28"
+           FontWeight="Bold"
+           Foreground="White"
+           HorizontalAlignment="Center"
+           VerticalAlignment="Top"
+           Margin="0,10,0,0"
+           Visibility="Collapsed"
+           Panel.ZIndex="20"/>
 
-			<Canvas.Background>
-				<ImageBrush x:Name="backgroundBrush" 
+        <Canvas x:Name="gameCanvas">
+
+            <Canvas.Background>
+                <ImageBrush x:Name="backgroundBrush" 
 							ImageSource="Images/normal.png" 
 							Stretch="UniformToFill"/>
-			</Canvas.Background>
+            </Canvas.Background>
 
-			<Image x:Name="bird" Source="Images/bird.png" Width="50" Height="34" Canvas.Left="50" Canvas.Top="200" RenderTransformOrigin="-0.02,0.741"/>
+            <Image x:Name="bird"
+                   Source="Images/bird.png"
+                   Width="50"
+                   Height="34"
+                   Canvas.Left="50"
+                   Canvas.Top="200"
+                   RenderTransformOrigin="0.5,0.5">
 
-			<Image x:Name="fogOverlay"
+                <Image.RenderTransform>
+                    <RotateTransform x:Name="birdRotate" Angle="0"/>
+                </Image.RenderTransform>
+
+            </Image>
+
+
+            <Image x:Name="fogOverlay"
 				   Source="Images/fog.png"
 				   Visibility="visible"
 				   Canvas.Left="0"
@@ -27,47 +52,46 @@
 				   Height="434"
 				   Panel.ZIndex="10"/>
 
-			<Image x:Name="rainOverlay"
+            <Image x:Name="rainOverlay"
 				   Source="Images/rain.png"
-				   Opacity="0.8"
-				   Width="800"
-				   Height="434"
+				   Opacity="0.6"
+				   Width="828"
+				   Height="597"
 				   Panel.ZIndex="9"
-				   Canvas.Left="0"
-				   Canvas.Top="0"
+				   Canvas.Top="-49"
 				   Visibility="Collapsed"
-				   IsHitTestVisible="False"/>
+				   IsHitTestVisible="False" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="-14"/>
 
 
-			<TextBlock x:Name="scoreText" Text="Score: 0" FontSize="24" FontWeight="Bold" Foreground="#d9ff00" Canvas.Left="10" Canvas.Top="10"/>
+            <TextBlock x:Name="scoreText" Text="Score: 0" FontSize="24" FontWeight="Bold" Foreground="plum" Canvas.Left="10" Canvas.Top="10"/>
 
-		</Canvas>
+        </Canvas>
 
-		<Grid x:Name="menuScreen" Background="#AA000000" Visibility="Visible">
-			<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-				<TextBlock Text="Flappy Bird" FontSize="48" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-				<Button x:Name="startButton" Content="Start" Width="150" Height="50" Margin="0,20,0,0" Click="StartButton_Click"/>
-				<Button x:Name="exitButton" Content="Exit" Width="150" Height="50" Margin="0,10,0,0" Click="ExitButton_Click"/>
-			</StackPanel>
-		</Grid>
+        <Grid x:Name="menuScreen" Background="#AA000000" Visibility="Visible">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Flappy Bird" FontSize="48" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <Button x:Name="startButton" Content="Start" Width="150" Height="50" Margin="0,20,0,0" Click="StartButton_Click"/>
+                <Button x:Name="exitButton" Content="Exit" Width="150" Height="50" Margin="0,10,0,0" Click="ExitButton_Click"/>
+            </StackPanel>
+        </Grid>
 
-		<Grid x:Name="difficultyScreen" Background="#AA000000" Visibility="Collapsed">
-			<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-				<TextBlock Text="Select Difficulty" FontSize="36" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-				<Button x:Name="normalButton" Content="Normal" Width="150" Height="50" Margin="0,20,0,0" Click="NormalButton_Click"/>
-				<Button x:Name="foggyButton" Content="Foggy" Width="150" Height="50" Margin="0,10,0,0" Click="FoggyButton_Click"/>
-				<Button x:Name="rainyButton" Content="Rainy" Width="150" Height="50" Margin="0,10,0,0" Click="RainyButton_Click"/>
-				<Button x:Name="backButton" Content="Back" Width="150" Height="50" Margin="0,10,0,0" Click="BackButton_Click"/>
-			</StackPanel>
-		</Grid>
+        <Grid x:Name="difficultyScreen" Background="#AA000000" Visibility="Collapsed">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Select Difficulty" FontSize="36" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <Button x:Name="normalButton" Content="Normal" Width="150" Height="50" Margin="0,20,0,0" Click="NormalButton_Click"/>
+                <Button x:Name="foggyButton" Content="Foggy" Width="150" Height="50" Margin="0,10,0,0" Click="FoggyButton_Click"/>
+                <Button x:Name="rainyButton" Content="Rainy" Width="150" Height="50" Margin="0,10,0,0" Click="RainyButton_Click"/>
+                <Button x:Name="backButton" Content="Back" Width="150" Height="50" Margin="0,10,0,0" Click="BackButton_Click"/>
+            </StackPanel>
+        </Grid>
 
-		<Grid x:Name="gameOverScreen" Background="#AA000000" Visibility="Collapsed">
-			<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-				<TextBlock Text="Game Over" FontSize="48" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-				<Button x:Name="restartButton" Content="Restart" Width="150" Height="50" Margin="0,20,0,0" Click="RestartButton_Click"/>
-				<Button x:Name="changeDifficultyButton" Content="Change Difficulty" Width="150" Height="50" Margin="0,10,0,0" Click="DifficultytChangeButton_Click"/>
-				<Button x:Name="exitButton2" Content="Exit" Width="150" Height="50" Margin="0,10,0,0" Click="ExitButton_Click"/>
-			</StackPanel>
-		</Grid>
-	</Grid>
+        <Grid x:Name="gameOverScreen" Background="#AA000000" Visibility="Collapsed">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Game Over" FontSize="48" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <Button x:Name="restartButton" Content="Restart" Width="150" Height="50" Margin="0,20,0,0" Click="RestartButton_Click"/>
+                <Button x:Name="changeDifficultyButton" Content="Change Difficulty" Width="150" Height="50" Margin="0,10,0,0" Click="DifficultytChangeButton_Click"/>
+                <Button x:Name="exitButton2" Content="Exit" Width="150" Height="50" Margin="0,10,0,0" Click="ExitButton_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
 </Window>

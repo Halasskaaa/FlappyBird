@@ -49,7 +49,10 @@ namespace FlappyBird
             Canvas.SetTop(bird, y + gravity);
             gravity += 1;
 
-			if (y < 0 || y + bird.Height > gameCanvas.ActualHeight)
+            double targetAngle = gravity < 0 ? -45 : 45;
+            birdRotate.Angle += (targetAngle - birdRotate.Angle) * 0.1;
+
+            if (y < 0 || y + bird.Height > gameCanvas.ActualHeight)
 			{
 				GameOver();
 			}
@@ -110,6 +113,7 @@ namespace FlappyBird
             if (e.Key == Key.Space)
             {
                 gravity = jumpStrength;
+				birdRotate.Angle = -45;
             }
         }
 
@@ -148,7 +152,11 @@ namespace FlappyBird
 		public void GameOver()
 		{
 			gameTimer.Stop();
-			gameOverScreen.Visibility = Visibility.Visible;
+
+			finalScoreText.Text = "Final Score: " + (score / 2);
+			finalScoreText.Visibility = Visibility.Visible;
+
+            gameOverScreen.Visibility = Visibility.Visible;
 		}
 
 		public void StartButton_Click(object sender, RoutedEventArgs e)
@@ -274,6 +282,10 @@ namespace FlappyBird
 			difficultyScreen.Visibility = Visibility.Collapsed;
 
 			gameTimer.Start();
-		}
-	}
+
+            birdRotate.Angle = 0;
+
+			finalScoreText.Visibility = Visibility.Collapsed;
+        }
+    }
 }
